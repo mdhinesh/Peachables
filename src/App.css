@@ -1,0 +1,70 @@
+/* Define the scrollbar styles */
+.start_studying_card_container::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+    border-radius: 5px; /* add border radius */
+}
+  
+.start_studying_card_container::-webkit-scrollbar-track{
+  background: #EAD8C1;
+  border-radius: 5px; /* add border radius */
+  margin: 20px 0;
+}
+
+.start_studying_card_container::-webkit-scrollbar-thumb {
+  background: rgb(46,154,108);
+  border-radius: 5px; /* add border radius */
+}
+  
+.start_studying_card_container{
+  min-height: 500px;
+}
+
+.your_quizzes_card_container{
+  min-height: 500px;
+}
+
+.your_quizzes_card_container::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+    border-radius: 5px; /* add border radius */
+}
+
+.your_quizzes_card_container::-webkit-scrollbar-track{
+  background: #EAD8C1;
+  border-radius: 5px; /* add border radius */
+  margin: 20px 0;
+}
+
+.your_quizzes_card_container::-webkit-scrollbar-thumb {
+  background: rgb(46,154,108);
+  border-radius: 5px; /* add border radius */
+}
+
+/* input[type="checkbox"] {
+  height: 30px;
+  width: 30px;
+} */
+
+.quiz_choice::placeholder{
+  color: white
+}
+
+.create_quiz_name_input::placeholder{
+  color: white;
+}
+
+.create_quiz_question_input::placeholder{
+  color: white;
+}
+
+.create_quiz_question_input::-webkit-scrollbar {
+  width: 8px;
+}
+
+.create_quiz_question_input::-webkit-scrollbar-track{
+background: white;
+border-radius: 2px;
+}
+
+.create_quiz_question_input::-webkit-scrollbar-thumb {
+background: #CCCCCC;
+}
