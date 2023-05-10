@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { logout } from "../auth/config";
 
 const Profile = () => {
     return ( 
@@ -9,15 +10,15 @@ const Profile = () => {
                     <div className="profile_text_info my-auto">
                         <h1 className="text-5xl">username</h1>
                         <h2 className="flex flex-row">
-                            <h2 className="text-xl hover:underline cursor-pointer">
+                            <p className="text-xl hover:underline cursor-pointer">
                                 Edit 
-                            </h2>
+                            </p>
                                 <span className="text-5xl leading-3 relative -top-1 px-2">
                                     .
                                 </span> 
-                            <h2 className="text-xl hover:underline cursor-pointer">
+                            <p onClick={logout} className="text-xl hover:underline cursor-pointer">
                                 logout
-                            </h2>
+                            </p>
                         </h2>
                     </div>
                     <div className="profile_img_div bg-quiz w-32 h-32 rounded-full">

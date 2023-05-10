@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { loginEmailPassword, monitorAuthState } from '../auth/config';
 
-const Login = () => {
+export const Login = () => {
 
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const handleSignIn = async () => {
       setLoading(true);
@@ -12,6 +15,48 @@ const Login = () => {
   
       setLoading(false);
     };  
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const email = event.currentTarget.email.value;
+        const password = event.currentTarget.password.value;
+        // set the email and password to empty strings
+        event.currentTarget.email.value = '';
+        event.currentTarget.password.value = '';
+        try {
+          await loginEmailPassword(email, password);
+          navigate("/");
+          // account created successfully, navigate to the dashboard or home page
+        } catch (error) {
+          // handle error here or display it on the login form
+          console.log(error);
+          alert(error);
+        }
+    };  
+
+    const showLoginState = (user: any) => {
+        console.log(`You're logged in as ${user.displayName} (uid: ${user.uid}, email: ${user.email}) `);
+        navigate("/");
+    }
+      
+    useEffect(() => {
+        // Call the `monitorAuthState` function in the `useEffect()` hook
+        monitorAuthState(showLoginState);
+      }, []);
+    
+
+    // useEffect(() => {
+        // if(monitorAuthState() === true)
+        // const unsubscribe = monitorAuthState((user: any) => {
+        //     if (user) {
+        //         navigate("/");
+        //     }
+        //     else {
+        //         navigate('/login');
+        //     }
+        // });
+        // return () => unsubscribe;
+    // }, [])
 
     return ( 
         <div className="login h-screen flex flex-col justify-center items-center">
@@ -34,14 +79,14 @@ const Login = () => {
                     <div className="seperator_line h-px bg-gray w-full ml-3"></div>
                 </div>
                 <div className="login_form w-full mt-4">
-                    <form className="flex flex-col">
+                    <form onSubmit={handleSubmit} className="flex flex-col">
                         <div className="form_group mb-4 flex flex-col">
                             <label className="form_label mb-1" htmlFor="email">Email</label>
-                            <input className="form_input p-2 rounded-sm border border-slate-400 outline-none" type="email" name="email" id="email" />
+                            <input className="form_input p-2 rounded-sm border border-slate-400 outline-none" type="email" name="email" id="email" required />
                         </div>
                         <div className="form_group mb-8 flex flex-col">
                             <label className="form_label mb-1" htmlFor="password">Password</label>
-                            <input className="form_input p-2 rounded-sm border border-slate-400 outline-none" type="password" name="password" id="password" />
+                            <input className="form_input p-2 rounded-sm border border-slate-400 outline-none" type="password" name="password" id="password" required />
                         </div>
                         <div className="form_group mb-6">
                             <button className="form_button bg-buttoncolor py-3 rounded-sm w-full text-white font-medium" type="submit">Login</button>

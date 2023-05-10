@@ -1,9 +1,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+
+import { createAccount } from '../auth/config';
 
 const Signup = () => {
 
     const [loading, setLoading] = useState(false);
+    const [name, setName] = useState('');
+
+    const navigate = useNavigate();
 
     const handleSignIn = async () => {
       setLoading(true);
@@ -13,6 +19,25 @@ const Signup = () => {
       setLoading(false);
     };  
 
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const email = event.currentTarget.email.value;
+        const password = event.currentTarget.password.value;
+        // set the email and password to empty strings
+        setName(''); // clear the input field
+        event.currentTarget.email.value = '';
+        event.currentTarget.password.value = '';
+        try {
+          await createAccount(email, password);
+          navigate("/login");
+          // account created successfully, navigate to the dashboard or home page
+        } catch (error) {
+          // handle error here or display it on the login form
+          console.log(error);
+          alert(error);
+        }
+    };  
+    
     return ( 
         <div className="signup h-screen flex flex-col justify-center items-center mobile:mx-6">
             <div className="signup_container laptop:w-1/3">
@@ -34,21 +59,21 @@ const Signup = () => {
                     <div className="seperator_line h-px bg-gray w-full ml-3"></div>
                 </div>
                 <div className="signup_form w-full mt-4">
-                    <form className="flex flex-col">
+                    <form onSubmit={handleSubmit} className="flex flex-col">
                         <div className="form_group mb-4 flex flex-col">
                             <label className="form_label mb-1" htmlFor="name">Name</label>
-                            <input className="form_input p-2 rounded-sm border border-slate-400 outline-none" type="name" name="name" id="name" />
+                            <input className="form_input p-2 rounded-sm border border-slate-400 outline-none" type="text" name="name" id="name" value={name} onChange={(event) => setName(event.target.value)} required/>
                         </div>
                         <div className="form_group mb-4 flex flex-col">
                             <label className="form_label mb-1" htmlFor="email">Email</label>
-                            <input className="form_input p-2 rounded-sm border border-slate-400 outline-none" type="email" name="email" id="email" />
+                            <input className="form_input p-2 rounded-sm border border-slate-400 outline-none" type="email" name="email" id="email" required />
                         </div>
                         <div className="form_group mb-8 flex flex-col">
                             <label className="form_label mb-1" htmlFor="password">Password</label>
-                            <input className="form_input p-2 rounded-sm border border-slate-400 outline-none" type="password" name="password" id="password" />
+                            <input className="form_input p-2 rounded-sm border border-slate-400 outline-none" type="password" name="password" id="password" required />
                         </div>
                         <div className="form_group mb-6">
-                            <button className="form_button bg-buttoncolor py-3 rounded-sm w-full text-white font-medium" >signup</button>
+                            <button type='submit' className="form_button bg-buttoncolor py-3 rounded-sm w-full text-white font-medium" >signup</button>
                         </div>
                     </form>
                 </div>
