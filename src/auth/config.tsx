@@ -2,7 +2,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -55,7 +54,7 @@ export const loginEmailPassword = async (loginEmail: string, loginPassword: stri
 }
 
 // Monitor auth state
-export const monitorAuthState = async (showLoginState: any) => {
+export const monitorAuthState = async (showLoginState?: any, showLoginForm?: any) => {
   onAuthStateChanged(auth, user => {
     if (user) {
       console.log(user)
@@ -65,10 +64,14 @@ export const monitorAuthState = async (showLoginState: any) => {
       // hideLinkError()
     }
     else {
-      // showLoginForm()
       console.log(`You're not logged in.`);
+      // If the url is login don't call the showLoginForm function
+      if (window.location.pathname !== '/login'){
+        showLoginForm();
+      }
     }
   })
+  console.log("monitorAuthState() called here");
 }
 
 // Log out

@@ -11,3 +11,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     </BrowserRouter>
   </React.StrictMode>,
 )
+
+// import { Provider } from "react-redux";
+// import store from './store/store'
+// <Provider store={store}>
+// <App />
+// </Provider>,

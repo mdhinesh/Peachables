@@ -13,7 +13,7 @@ const Home = () => {
                 <div className="greet_pratice_start_studying_container tablet:w-3/4 laptop:w-1/2 tablet:mx-10 laptop:ml-48">
                     <div className="greet_user_pratice_more py-20 md:py-24 snap-center">
                         <Greetuser />
-                        <Practicemore />
+                        {/* <Practicemore /> */}
                     </div>
                     <Startstudying />
                 </div>

@@ -42,9 +42,11 @@ export const Login = () => {
     useEffect(() => {
         // Call the `monitorAuthState` function in the `useEffect()` hook
         monitorAuthState(showLoginState);
-      }, []);
+        return () => {
+            console.log("monitorAuthState() returned");
+        }
+    }, [monitorAuthState]);
     
-
     // useEffect(() => {
         // if(monitorAuthState() === true)
         // const unsubscribe = monitorAuthState((user: any) => {
