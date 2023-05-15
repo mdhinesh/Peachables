@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchQuizList } from '../api/quizlist';
-import '../styles/startstudying.css';
+import '../styles/Startstudying.css';
 
 const StartStudying = () => {
 
