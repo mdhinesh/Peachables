@@ -12,7 +12,7 @@ import Takequiz from './pages/Takequiz';
 function App() {
   
   const backgroundStyle = {
-    backgroundImage: "url('../src/assets/MacBook Pro 16_ BG.png')",
+    backgroundImage: "url('/src/assets/MacBook Pro 16_ BG.png')",
     backgroundRepeat: "repeat-y",
   };
   

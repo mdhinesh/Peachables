@@ -1,0 +1,8 @@
+
+/* wirite a media query for screen width below 600px */
+@media screen and (max-width: 600px) {
+    .quiz_harness_level{
+        display: none;
+    }   
+}
+
