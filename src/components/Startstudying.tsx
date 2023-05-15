@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchQuizList } from '../api/quizlist';
-import '../styles/Startstudying.css';
 
 const StartStudying = () => {
 
@@ -50,7 +49,7 @@ const StartStudying = () => {
                         </div>
                         <div className="start_studying_card_hardness_info my-auto absolute right-28 top-10">
                         {/* laptop:right-16 laptop:top-9 */}
-                            <p className='bg-card-hardness p-2 w-28 h-auto text-center rounded font-medium quiz_harness_level' >
+                            <p className='bg-card-hardness p-2 w-28 h-auto text-center rounded font-medium max-[600px]:hidden' >
                                 {quiz.hardness}
                             </p>
                         </div>
