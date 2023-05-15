@@ -36,7 +36,7 @@ const StartStudying = () => {
                 {quizzes.map((quiz: { quizname: any; questionNumbers: any; hardness: any; time: any }) => (
                     <div key={quiz.quizname} className='start_studying_card flex flex-row h-28 rounded-2xl relative bg-card my-5 mr-5 snap-center'>
                         <div className="start_studying_card_img my-auto p-5">
-                            <img src="/src/assets/start_studying_card_img.svg" alt="" />
+                            <img src="start_studying_card_img.svg" alt="" />
                         </div>
                         <div className='start_studying_card_text_info my-auto'>
                             <h2 className='text-2xl p-1'>
@@ -56,7 +56,7 @@ const StartStudying = () => {
                         <div className="start_studying_card_right absolute right-10 top-12 ">
                         {/* laptop:right-8 */}
                             <Link to={`/takequiz/${quiz.quizname}`}>
-                                <img className='h-5 w-5 cursor-pointer' src="/src/assets/start_quiz_button.svg" alt="Start" />
+                                <img className='h-5 w-5 cursor-pointer' src="start_quiz_button.svg" alt="Start" />
                             </Link>
                         </div>
                     </div>
